@@ -35,3 +35,17 @@ pip install package_name
 ```
 
 In my case, pipx and pip3 couldn't make it possible to install seaborn library. But the code made it to have seaborn with me now.
+
+## Path Environmental Variable Check
+
+```
+nano ~/.zshrc
+```
+
+```
+export PATH="${HOME}/Desktop/머신러닝/.venv/bin:$PATH"
+```
+
+```
+source ~/.zshrc
+```
