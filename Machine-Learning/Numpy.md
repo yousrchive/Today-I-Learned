@@ -1,15 +1,16 @@
-#넘파이
+#Numpy
 
-머신러닝의 주요 알고리즘은 선형대수와 통계 등에 기반합니다. Numerical Python을 의미하는 넘파이는 파이썬에서 선형대수 기반 프로그램을 쉽게 만들 수 있도록 지원하는 대표 패키지입니다.
+The main algorithm of machine learning is based on linear algebra and statistics, etc. Numpy, which means numerical Python, is a representative package that helps make it easier to create linear algebra-based programs in Python.
 
-넘파이는 C/C++과 같은 저수준 언어 기반의 호환 API를 제공합니다. 넘파이는 매우 빠른 배열 연산을 보장하지만 파이썬 언어 자체가 가지는 수행 성능의 제약이 있으므로 수행 성능이 매우 중요한 부분은 C/C++ 기반의 코드로 작성하고 이를 넘파이에서 호출하는 방식으로 통합할 수 있습니다.
+Numpy offers compatible APIs based on low-level languages such as C/C++. Numpy guarantees very fast array operations, but the performance of the Python language itself is limited, so performance-critical parts can be integrated by writing them in C/C++-based code and calling them in Numpy.
 
-배열 기반 연산은 물론이고 데이터 핸들링 기능을 제공합니다. 많은 머신러닝 알고리즘이 넘파이 기반으로 작성돼 있음은 물론이고 이들 알고리즘의 입력 데이터와 출력 데이터를 넘파이 배열 타입으로 사용하기 때문입니다.
+It provides data handling as well as array-based operations. This is due to the fact that many machine learning algorithms are built on the basis of Numpy, as well as the input and output data of these algorithms, are used as Numpy array types.
 
-# np.array()의 사용법
+# How to use np.array()
 
-ndarray로 변환을 원하는 객체를 인자로 입력하면 ndarray를 반환
-ndarray.shape는 ndarray의 차원과 크기를 튜플 형태로 나타냅니다.
+Return ndarray if you enter the object you want to convert to ndarray as a factor
+ndarray.shape represents the dimensions and sizes of the ndarray in tuple form.
 
-#  ndarray의 차원과 크기를 변경하는 reshape()
-지정된 사이즈로 변경이 불가능하면 오류를 발생합니다.
+#  Reshape() to change the dimension and size of the ndarray
+An error will occur if the change to the specified size is not possible.
+If the factor is applied to -1, it is converted to a new shape compatible with the original ndarray
