@@ -66,19 +66,10 @@ As there is no need to build your own infrastructure, it reduces the hassle of e
 
 Upload existing files to Google Cloud following below: 
 
-![2](../SQL/img/basic/스크린샷%202024-08-13%20오후%208.18.24.png)
-
-
-![big](../SQL/img/basic/스크린샷%202024-08-13%20오후%209.19.26.png)
-
-![big](../SQL/img/basic/스크린샷%202024-08-13%20오후%209.34.12.png)
 
 A row is jumped and ignored; As the first row is just mentioning about what's heading to the following rows;
 just for further explanation
 
-![part](../SQL/img/basic/스크린샷%202024-08-13%20오후%209.35.11.png)
-
 Icon shape of 'Battle' table is different with others;
 As the table is divided by `partitions`.
 
-![open](../SQL/img/basic/스크린샷%202024-08-13%20오후%209.39.45.png)
