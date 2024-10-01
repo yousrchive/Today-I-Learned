@@ -64,4 +64,4 @@ ORDER BY
     D.ID ASC;
 ```
 
-![screen](yousrchive/Today-I-Learned/SQL/img/스크린샷 2024-10-01 오후 9.12.55.png)
+![screen](https://github.com/yousrchive/Today-I-Learned/blob/main/SQL/img/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202024-10-01%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%209.12.55.png?raw=true)
