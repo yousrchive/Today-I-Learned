@@ -71,5 +71,47 @@ def solution(babbling):
 ## C 언어로 바꾸기
 
 ```C
+#include <stdio.h>
+#include <string.h>
 
+// 문자열이 패턴에 맞는지 확인하는 함수
+int is_valid_babbling(const char* word) {
+    // 가능한 패턴 목록
+    const char* pattern[] = {"aya", "ye", "ma", "woo"};
+    int pattern_count = 4;  // 패턴 개수
+    int word_len = strlen(word);  // 입력 단어 길이
+    int i = 0;
+
+    while (i < word_len) {
+        int matched = 0;
+        // 각 패턴과 비교
+        for (int j = 0; j < pattern_count; j++) {
+            int pattern_len = strlen(pattern[j]);
+            // 입력 문자열이 현재 패턴으로 시작하는지 확인
+            if (strncmp(&word[i], pattern[j], pattern_len) == 0) {
+                matched = 1;
+                i += pattern_len;  // 패턴에 맞으면 인덱스를 이동
+                break;
+            }
+        }
+        // 패턴이 일치하지 않으면 유효하지 않은 문자열
+        if (!matched) {
+            return 0;
+        }
+    }
+
+    return 1;  // 패턴에 모두 맞으면 유효한 문자열
+}
+
+int solution(const char* babbling[], int babbling_count) {
+    int count = 0;
+
+    for (int i = 0; i < babbling_count; i++) {
+        if (is_valid_babbling(babbling[i])) {
+            count++;
+        }
+    }
+
+    return count;
+}
 ```

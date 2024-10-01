@@ -1,0 +1,67 @@
+# JOIN AND CONDITION MATCHED
+
+USED-GOODS-BOARD에서 가져와야할 것: STATUS (이미 완료된 것만 취급해야 함) "DONE"
+WRITER ID - USER 테이블에서 USER_ID와 같음
+PRICE - 집계하여 70만원 이상인지 확인해야 함
+
+USED-GOODS-USER 테이블에서 가져와야 하는 것
+-> 위 BOARD의 SUM 조건이 맞다면 USER ID, NICKNAME을 가져와야 함.
+
+테이블을 조인해야 하는데, Writer Id와 User Id를 기준으로 조인함
+
+
+``` sql
+SELECT U.USER_ID, U.NICKNAME, SUM(B.PRICE) AS TOTAL_TRANSACTION_AMOUNT
+FROM USED_GOODS_BOARD B
+JOIN USED_GOODS_USER U
+ON B.WRITER_ID = U.USER_ID
+WHERE B.STATUS = 'DONE'
+-- JOIN을 하되, DONE인 것만 가져옴
+GROUP BY U.USER_ID, U.NICKNAME
+HAVING SUM(B.PRICE) >= 700000
+ORDER BY TOTAL_TRANSACTION_AMOUNT ASC;
+
+```
+
+# ROOT-ITEM-FINDER
+
+PARENT ITEM
+ROOT ITEM
+ROOT 아이템의 PARENT 아이템 ID는 NULL임
+NOT NULL인 PARENT_ITEM_ID는 부모가 있다는 것임
+-> 그 리스트에 속하지 않은 ITEM_ID의 경우 ROOT 아이템이라는 것임
+
+``` sql
+SELECT ITEM_ID, ITEM_NAME, RARITY
+FROM  ITEM_INFO 
+WHERE ITEM_ID NOT IN 
+(SELECT DISTINCT PARENT_ITEM_ID
+                      FROM ITEM_TREE
+                      WHERE PARENT_ITEM_ID IS NOT NULL)
+ORDER BY ITEM_ID DESC
+```
+
+# 조건에 맞는 개발자 찾기
+
+DEVELOPERS 테이블에서 Python, C# 스킬을 가진 개발자 정보 조회
+SKILLCODES의 NAME 칼럼이 IN (C++, Python)인 것이 조건
+그리고 그러한 CODE의 값을 가진 ID, EMAIL, FIRST_NAME, LAST_NAME을 가져오는 것
+-> JOIN이 불가결
+
+```sql
+SELECT 
+    D.ID,
+    D.EMAIL,
+    D.FIRST_NAME,
+    D.LAST_NAME
+FROM 
+    DEVELOPERS D
+JOIN 
+    SKILLCODES S ON D.SKILL_CODE & S.CODE = S.CODE
+WHERE 
+    S.NAME = 'Python' OR S.NAME = 'C#'
+ORDER BY 
+    D.ID ASC;
+```
+
+![screen](yousrchive/Today-I-Learned/SQL/img/스크린샷 2024-10-01 오후 9.12.55.png)

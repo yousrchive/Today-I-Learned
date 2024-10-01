@@ -74,6 +74,9 @@ int solution(int common[], int length) {
     if (common[1] - common[0] == common[2] - common[1]) {
         int diff = common[1] - common[0];
         return common[length-1] + diff;
+    } else {
+        int ratio = common[1] / common[0]; //공비 확인
+        return common[length-1] * ratio;
     }
 }
 ```
