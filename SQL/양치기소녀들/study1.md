@@ -1,0 +1,27 @@
+### 특정 세대의 대장균 찾기
+
+-- 분화할 수 있음
+-- PARENT_ID에 대해서 null인지 아닌지 확인
+-- 만약 PARENT_ID이 null이라면 LEVEL이 1세대
+-- PARENT_ID가 LEVEL '1'에 있다면 2세대
+-- PARENT_ID가 LEVEL '2'에 있다면 3세대
+-- PARENT_ID가 LEVEL '3'에 있다면 4세대 ...
+-- 3세대의 대장균 ID를 출력하는 SQL
+
+SELECT ID
+FROM ECOLI_DATA
+WHERE PARENT_ID IN (
+SELECT ID
+FROM ECOLI_DATA
+WHERE PARENT_ID IN (SELECT ID
+FROM ECOLI_DATA
+WHERE PARENT_ID IS NULL))
+ORDER BY ID ASC;
+
+근데 CASE WHEN을 써서도 할 수 있지 않을까?
+
+WITH RECURSIVE CTE AS (
+    SELECT 0 AS NUM
+    UNION ALL
+    SELECT NUM + 1 FROM CTE
+)
